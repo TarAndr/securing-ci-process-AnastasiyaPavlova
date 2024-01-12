@@ -22,5 +22,5 @@ It is necessary to implement signature verification for commits in Gitlab-ce, as
  
     4. Create the Pipeline. (You need to create a file in the project - .gitlab-ci.yml) 
     5. The contents of this file can be (export will show all the env variables. Hint  - this may help you to realize checking the commit sign)
-6. Implement signature verification on the runner side, via config file /etc/gitlab-runner/config.toml
+    6. Implement signature verification on the runner side, via config file /etc/gitlab-runner/config.toml
     7. To make everything work, you need to import the public key of the user who signs on behalf of the  gitlab-runner user
