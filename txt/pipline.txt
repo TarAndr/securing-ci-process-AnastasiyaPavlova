@@ -1,0 +1,13 @@
+verify_signature:
+  stage: build
+  script:
+    - echo "$GPG_PUBLIC_KEY" > public-key.asc
+    - gpg --import public-key.asc
+    - if git log --show-signature -n 1 $CI_COMMIT_SHA | grep -q "Good signature"; then
+        echo "Signature verification successful:";
+        git log --show-signature -n 1 $CI_COMMIT_SHA;
+      else
+        echo "Invalid GPG signature. Stopping pipeline.";
+        exit 1;
+      fi
+
